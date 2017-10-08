@@ -1,13 +1,12 @@
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 double celsius_of(int fahr);
 double absolute_value_of(int fahr);
 
 void print_preliminary_message();
-void input_table_specification(int& lowest_entry, int& highest_entry, int& step_size);
+void input_table_specifications(int& lowest_entry, int& highest_entry, int& step_size);
 void print_message_echoing_input(int lowest_entry, int highest_entry, int step_size);
 void print_table(int lowest_entry, int highest_entry, int step_size);
 
@@ -43,15 +42,15 @@ double absolute_value_of(int fahr)
 
 void print_preliminary_message()
 {
-	cout << "Welcome to the temperture convertor.";	
+	cout << "Welcome to the temperture convertor. ";
 	cout << "The program displays a temperature conversion chart." << endl;	
 }
 
 void input_table_specifications(int& lowest_entry, int& highest_entry, int& step_size)
 {
-	cout << "Please state the desired lowest temperature:" << endl;
+	cout << "Please state the desired lowest temperature (Fahrenheit):" << endl;
 	cin >> lowest_entry;
-	cout << "Please state the desired upper temperature:" << endl;
+	cout << "Please state the desired upper temperature (Fahrenheit):" << endl;
 	cin >> highest_entry;
 	cout << "Please state the desired step size between rows:" << endl;
 	cin >> step_size;
@@ -60,7 +59,7 @@ void input_table_specifications(int& lowest_entry, int& highest_entry, int& step
 
 void print_message_echoing_input(int lowest_entry, int highest_entry, int step_size)
 {
-	cout << "Temperature will be converted from a range of " << lowest_entry << "Fahrenheit" << endl;
+	cout << "The temperature will be converted from a range of " << lowest_entry << " Fahrenheit" << endl;
 	cout << "to " << highest_entry << " Fahreheit, in steps of ";
 	cout << step_size << " Fahrenheit." << endl << endl;
 }
