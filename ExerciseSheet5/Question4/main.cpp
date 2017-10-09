@@ -40,5 +40,11 @@ void print_day(Day _day, ostream &out_stream)
 
 int closing_time(Day day_of_the_week)
 {
-    return 5;
+    switch (day_of_the_week)
+        {
+        case Sun: return 1;
+        case Wed: return 8;
+        case Sat: return 5;
+        default: return 6;
+        }
 }
