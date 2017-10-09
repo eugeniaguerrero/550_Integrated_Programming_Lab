@@ -19,13 +19,13 @@ int main()
     {
         cout.width(19);
 //        switch (count)
-        cout << print_day(static_cast<Day>(count), cout);
+        print_day(static_cast<Day>(count), cout);
         cout << closing_time(static_cast<Day>(count)) << "pm\n";
     }
     return 0;
 }
 
-int print_day(Day day_of_the_week)
+int print_day(Day day_of_the_week, count)
 {
         switch (count)
             {
