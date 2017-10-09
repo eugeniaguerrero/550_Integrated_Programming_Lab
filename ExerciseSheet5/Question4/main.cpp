@@ -18,7 +18,6 @@ int main()
     for (count = static_cast<int>(Sun) ; count <= static_cast<int>(Sat) ; count++)
     {
         cout.width(19);
-//        switch (count)
         print_day(static_cast<Day>(count), cout);
         cout << closing_time(static_cast<Day>(count)) << "pm\n";
     }
