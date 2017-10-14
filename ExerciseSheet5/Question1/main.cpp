@@ -2,36 +2,45 @@
 
 using namespace std;
 
+enum Logical {True, False};
+
+int valid_integer();
+Logical is_prime(int integer);
+
 int main()
 {
-    int input_integer, valid_integer;
-    bool is_prime;
+    	int number;
 
-    cout << "This program will indicate whether a prime number between 1 and 1000 is prime." << endl;
-    cout << "Please input an integer: ";
-    cin >> input_integer;
+    	cout << "This program will indicate whether an integer between 1 and 1000 is prime." << endl;
 
-    valid_integer(input_integer);
-    is_prime(input_integer);
-
+    	number = valid_integer();
+	while (number != 0) {
+    	cout << "The number " << number << " is ";
+		if (!is_prime(number))
+			cout << "not ";
+		cout << "a prime between 1 and 1000" << endl << endl;
+    	number = valid_integer();
+	}
     return 0;
 }
-int valid_integer(input_integer)
-{
-    while input_integer != 0 do {
-        if input_integer > 1000 {
-                cout << "Invalid input. The integer you inputted is larger than 1000. Please try again." << endl;
-                return 0;
-            } else if input_integer == 1 {
-                cout << "1 is not prime."
-                return 0;
-            } else {
-                return input_integer
-            }
-        }
+int valid_integer()
+{ 
+    int number;
+    do {
+	    cout << "Enter an integer between 1 and 1000 included or 0 to end the program: ";
+	    cin >> number;
+            if (number > 1000 || number < 0) 
+                cout << "Invalid input, number out of range. Please try again." << endl;
+    } while (number > 1000 || number < 0);
+        
+	return number;
 }
 
-bool is_prime(input_integer)
+Logical is_prime(int integer)
 {
-
+	for (int factor = 2; factor < integer; factor++) {
+		if ((integer % factor) == 0)
+			return False;
+	}
+	return True;
 }
