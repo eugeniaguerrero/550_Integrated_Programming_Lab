@@ -3,34 +3,41 @@
 
 using namespace std;
 
+int count_character(char letter);
+
 int main()
 {
-	ifstream in_stream;
+  char letter;
 
-	in_stream.open("Sheet5Ex5.cpp");
-	
-	if (!in_stream) {
-		cerr << "Unable to open file Sheet5Ex5.cpp";
-		return 0;
-	} else 
-	{	
-	int table_header();
-	while (in_stream){
+  cout.setf(ios::left);
 
-	}	
-	return 0;
-	}
+  cout.width(19);
+  cout << "CHARACTER";
+  cout << "OCCURENCES" << endl << endl;
+
+  // Cycles through letters a-z, is used with count_character function
+  for (letter = 'a'; letter <= 'z'; letter++){
+    cout.width(19);
+    cout << letter;
+    cout << count_character(letter) << endl;
+  }
+
+  return 0;
 }
 
-int table_header()
-{
-	std::cout.width(10);	
-	cout << "CHARACTER";
-	std::cout.width(17);
-	cout << "OCCURENCES" << endl;	
-}
+int count_character(char letter){
+  char character;
+  ifstream in_stream;
 
-int table_body()
-{
-	while (in_stream)
+  in_stream.open("Sheet5Ex5.cpp");
+  in_stream.get(character);
+
+  int count;
+  for (count = 0; ! in_stream.fail(); in_stream.get(character)) {
+    if (character == letter)
+      count++;
+  }
+  in_stream.close();
+
+  return count;
 }
