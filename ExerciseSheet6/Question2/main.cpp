@@ -1,50 +1,52 @@
 #include <iostream>
 using namespace std;
 
-const int NO_OF_ELEMENTS = 5;
+const int MAXIMUM_STRING_LENGTH = 80;
 
-void selection_sort(int a[], int length);
-
-
+void string_sort(char a[]); 
+int minimum_from(char a[], int position);
+void swap(char& first, char& second);
 
 int main()
 {
-	int list[NO_OF_ELEMENTS];
-	int count;
+	char a_string[MAXIMUM_STRING_LENGTH];
+	cout << "Type in a string: ";
+	cin.getline(a_string, MAXIMUM_STRING_LENGTH);
+        string_sort(a_string);
+	cout << "The sorted string is: " << a_string << endl;
 
-	for (count = 0; count < NO_OF_ELEMENTS ; count++)
-	{
-		cout << "Enter value of element " << count << ": ";
-		cin >> list[count];
-	}
-
-	cout << endl << endl;
-
-	display_state(list, -1, NO_OF_ELEMENTS);
-
-	selection_sort(list, NO_OF_ELEMENTS);
-
-	return 0;
+	return 0; 
 }
 
-
-void selection_sort(int a[], int length)
+void string_sort(char a[])
 {
-	for (int count = 0; count < length - 1; count++)
+	int count = 0;
+
+	while (a[count] != '\0') 
 	{
-		swap(a[count], a[minimum_from(a, count, length)]);
-		display_state(a, count, length);
+		swap(a[count], a[minimum_from(a, count)]);
+		count++;
 	}
 }
 
-int minimum_from(int& first, int& second)
+int minimum_from(char a[], int position)
 {
-	int temp = first;
+	int min_index = position;
+	int count = position + 1;
+
+	while (a[count] != '\0')
+	{
+		if  (a[count] < a[min_index])
+			min_index = count;
+		count++;
+	}
+	return min_index;
+}
+
+void swap(char& first, char& second)
+{
+	char temp = first;
 	first = second;
 	second = temp;
 }
 
-void display_state(int a[], int stage, int length)
-{
-	cout << "STATE " << stage + 2 << ":" << endl << endl;
-	for (int count = 0; count < length; count++)
